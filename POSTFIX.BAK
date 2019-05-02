@@ -1,0 +1,58 @@
+void main()
+{
+	int stack[20],n,i,top=-1,a,b;
+	char c[20];
+	clrscr();
+	printf("enter limit\n");
+	scanf("%d",&n);
+	printf("enter elements\n");
+	for(i=0;i<=n-1;i++)
+	{
+		scanf("%s",&c[i]);
+	}
+	c[n]=')';
+	for(i=0;i<n+1;i++)
+	{
+		if(c[i]>=48 && c[i]<=57)
+		{
+			top++;
+			stack[top]=c[i]-48;
+		}
+		if(c[i]=='+')
+		{
+			a=stack[top];
+			b=stack[top-1];
+			top--;
+			stack[top]=b+a;
+		}
+		if(c[i]=='-')
+		{
+			a=stack[top];
+			b=stack[top-1];
+			top--;
+			stack[top]=b-a;
+		}
+		if(c[i]=='*')
+		{
+			a=stack[top];
+			b=stack[top-1];
+			top--;
+			stack[top]=b*a;
+		}
+		if(c[i]=='/')
+		{
+			a=stack[top];
+			b=stack[top-1];
+			top--;
+			stack[top]=b/a;
+		}
+		if(c[i]==')')
+		{
+			printf("result =%d",stack[top]);
+			break;
+		}
+	}
+	getch();
+}
+
+
